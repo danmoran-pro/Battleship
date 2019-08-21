@@ -20,7 +20,6 @@ class ShipTest < Minitest::Test
 
   def test_ship_can_be_sunk
     assert_equal false, @cruiser.sunk?
-    # require "pry";binding.pry
     @cruiser.hit
     assert_equal 2, @cruiser.health
     @cruiser.hit

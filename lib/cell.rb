@@ -14,4 +14,8 @@ attr_reader :coordinate, :ship
       false
     end
   end
+
+  def place_ship(ship)
+    @ship = ship
+  end
 end
