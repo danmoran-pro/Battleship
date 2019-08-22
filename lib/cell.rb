@@ -1,20 +1,16 @@
 class Cell
 
-attr_reader :coordinate, :ship, :fired_upon, :render
+attr_reader :coordinate, :ship, :fired_upon
 
-  def initialize(coordinate, fired_upon = false) #render = ".", ship = nil,)
+  def initialize(coordinate) #render = ".", ship = nil,)
     @coordinate = coordinate
     @ship = nil
-    @fired_upon = fired_upon
+    @fired_upon = false
     # @render = render
   end
 
   def empty?
-    if @ship == nil
-      true
-    else
-      false
-    end
+    @ship.nil?
   end
 
   def place_ship(ship)
@@ -26,21 +22,23 @@ attr_reader :coordinate, :ship, :fired_upon, :render
   end
 
   def fire_upon
-    if !empty?
-      @ship.hit
-      @fired_upon = true
-    else
-      @fired_upon = true
-    end
+    @ship.hit unless empty?
+    @fired_upon = true
   end
 
+
+
   def render(show = false)
+    result = "."
     if fired_upon? && empty?
-      "M"
-    elsif
-      @ship.sunk? ? "X" : "H"
-    else
-      (show && !empty?) ? "S" : "."
+      result = "M"
+    elsif fired_upon? && !empty?
+      result = "H"
+    #determine which order to test in
+    #   @ship.sunk? ? "X" : "H"
+    # else
+    #   (show && !empty?) ? "S" : "."
     end
+    result
   end
 end
