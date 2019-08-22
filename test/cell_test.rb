@@ -42,12 +42,12 @@ class CellTest < Minitest::Test
     assert_equal true, @cell.fired_upon?
   end
 
-  def test_cell_has_not_been_fired_upon
-    # require "pry"; binding.pry
+   def test_cell_has_not_been_fired_upon
     assert_equal ".", @cell.render
-    # @cell.fire_upon
-    # assert_equal "M", @cell.render
-    # @cell.place_ship(@cruiser)
-    # assert_equal "H", @cell.render
-  end
+  #   # @cell.fire_upon
+  #   # assert_equal "M", @cell.render
+  #   # @cell.place_ship(@cruiser)
+  #   # @cell.fire_upon
+  #   # assert_equal "H", @cell.render
+   end
 end
