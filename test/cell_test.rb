@@ -9,6 +9,7 @@ class CellTest < Minitest::Test
 
   def setup
     @cell = Cell.new("B4")
+    @cell_2 = Cell.new("C3")
     @cruiser = Ship.new("Cruiser", 3)
   end
 
@@ -16,15 +17,9 @@ class CellTest < Minitest::Test
     assert_instance_of Cell, @cell
   end
 
-  def test_cell_has_coordinate
+  def test_initialized_attributes
     assert_equal "B4", @cell.coordinate
-  end
-
-  def test_cell_has_ship
-    assert_equal nil, @cell.ship
-  end
-
-  def test_cell_is_empty
+    assert_nil @cell.ship
     assert_equal true, @cell.empty?
   end
 
@@ -42,12 +37,18 @@ class CellTest < Minitest::Test
     assert_equal true, @cell.fired_upon?
   end
 
-   def test_cell_has_not_been_fired_upon
+  def test_cell_has_not_been_fired_upon
     assert_equal ".", @cell.render
-  #   # @cell.fire_upon
-  #   # assert_equal "M", @cell.render
-  #   # @cell.place_ship(@cruiser)
-  #   # @cell.fire_upon
-  #   # assert_equal "H", @cell.render
-   end
+    @cell.fire_upon
+    assert_equal "M", @cell.render #test "S" next
+
+    @cell.place_ship(@cruiser)
+    @cell.fire_upon
+    assert_equal "H", @cell.render
+
+    small_boat = Ship.new("Cruiser", 1)
+    @cell.place_ship(small_boat)
+    @cell.fire_upon
+    assert_equal "X", @cell.render
+  end
 end
