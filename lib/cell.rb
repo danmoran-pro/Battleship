@@ -28,17 +28,30 @@ attr_reader :coordinate, :ship, :fired_upon
 
 
 
-  def render(show = false)
-    result = "."
-    if fired_upon? && empty?
+  def render
+    if empty?
+      result = "."
+    elsif fired_upon? && empty?
       result = "M"
-    elsif fired_upon? && !empty?
-      result = "H"
-    #determine which order to test in
-    #   @ship.sunk? ? "X" : "H"
-    # else
-    #   (show && !empty?) ? "S" : "."
     end
     result
   end
 end
+
+
+
+
+
+
+    # (show = false)
+    # result = "S"
+    # if empty? && show = true
+    #   result = "."
+    # if fired_upon? && empty?
+    #   result = "M"
+    # elsif fired_upon? && !empty?
+    #   result = "H"
+    # determine which order to test in
+
+    # end
+    # result
