@@ -41,7 +41,7 @@ class CellTest < Minitest::Test
     assert_equal ".", @cell.render
     @cell.fire_upon
     assert_equal "M", @cell.render #test "S" next
-
+    #
     @cell.place_ship(@cruiser)
     @cell.fire_upon
     assert_equal "H", @cell.render
@@ -50,5 +50,7 @@ class CellTest < Minitest::Test
     @cell.place_ship(small_boat)
     @cell.fire_upon
     assert_equal "X", @cell.render
+
+    assert_equal "S", @cell.render(true)
   end
 end
