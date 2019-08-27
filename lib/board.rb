@@ -11,7 +11,7 @@ class Board
   def create_cells
     @x_axis.flat_map do |x|
       @y_axis.flat_map do |y|
-        @cells["#{x + y.to_s}"] = (".")
+        @cells["#{x + y.to_s}"] = Cell.new("#{x + y.to_s}")
       end
     end
   end
