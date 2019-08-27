@@ -17,9 +17,15 @@ class Board
   end
 
   def create_cells_to_hash
+    new_cells = {}
     create_cells.map do |cell|
-      @cells[key] = Cell.new(cell)
+      new_cells[cell] = Cell.new(cell)
     end
+    new_cells
+  end
+
+  def valid_coordinate?(cell)
+    @cells.keys.include?(cell)
   end
 
 end

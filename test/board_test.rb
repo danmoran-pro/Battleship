@@ -25,8 +25,12 @@ class BoardTest < Minitest::Test
 
   def test_cells_are_created
     @board.create_cells
-    binding.pry
     assert_equal 25, @board.cells.count
+  end
+
+  def test_vaild_coordinates
+    @board.create_cells_to_hash
+    assert_equal true, @board.valid_coordinate?("A1")
   end
 
 end
