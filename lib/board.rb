@@ -37,12 +37,9 @@ class Board
     arr = letter.uniq
     # arr = ['A', 'C']
     arr.each_with_index do |char, idx|
-      if char.ord == arr[idx]
-        return true
-      elsif char.ord+1 != arr[idx+1]
-          return false
-      end
+      return false if char.ord+1 != arr[idx+1]
     end
+    true
   end
 
     # @x_axis.map do |letter|
