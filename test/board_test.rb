@@ -10,6 +10,7 @@ class BoardTest < Minitest::Test
   def setup
     @board = Board.new
     @cruiser = Ship.new("Cruiser", 3)
+    @submarine = Ship.new("Submarine", 2)
 
   end
 
@@ -24,16 +25,28 @@ class BoardTest < Minitest::Test
   end
 
   def test_cells_are_created
-    @board.create_cells
+    # @board.create_cells
     assert_equal 16, @board.cells.count
   end
 
   def test_vaild_coordinates
-    @board.create_cells_to_hash
-    assert_equal true, @board.valid_coordinate?("A1")
-    assert_equal true, @board.valid_coordinate?("D4")
-    assert_equal false, @board.valid_coordinate?("A5")
-    assert_equal false, @board.valid_coordinate?("A22")
+    # @board.create_cells_to_hash
+    assert @board.valid_coordinate?("A1")
+    assert @board.valid_coordinate?("D4")
+    refute @board.valid_coordinate?("A5")
+    refute @board.valid_coordinate?("A22")
   end
 
+  def test_letters_consecutive
+    # @board.create_cells_to_hash
+    # assert @board.all_letters_consecutive?(["A1", "A2", "A4"])
+    refute @board.all_letters_consecutive?(["A1", "A2", "C4"])
+  end
+
+  # def test_valid_board_placement
+  #   @board.create_cells_to_hash
+  #   assert_equal false, @board.valid_placement?(@cruiser, ["A1", "A2"])
+  #   assert_equal false, @board.valid_placement?(@submarine, ["A2", "A3", "A4"])
+  #   assert_equal false, @board.valid_placement?(@cruiser, ["A1", "A2", "A4"])
+  # end
 end
