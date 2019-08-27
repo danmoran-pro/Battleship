@@ -2,7 +2,7 @@ class Board
 
   attr_reader :x_axis, :y_axis, :cells
 
-  def initialize(x_axis = 5, y_axis = 5)
+  def initialize(x_axis = 4, y_axis = 4)
     @x_axis = ("A".."Z").to_a[0..x_axis-1]
     @y_axis =  (1..26).to_a[0..y_axis-1]
     @cells = Hash.new(".")
